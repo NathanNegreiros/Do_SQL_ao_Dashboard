@@ -2,17 +2,61 @@
 
 ## Visão Geral
 
-Este projeto tem como objetivo construir dois dashboards analíticos — **Vendas** e **Usuários** — utilizando consultas SQL otimizadas no **Google BigQuery**. O foco foi estruturar e modelar os dados de forma profissional, simulando o processo de criação de indicadores de negócio solicitados por stakeholders, desde o planejamento das métricas até a visualização final no **Looker Studio**.
+Este projeto tem como objetivo construir dois dashboards analíticos — **Vendas** e **Usuários** — utilizando consultas SQL otimizadas no **Google BigQuery**. O foco foi simular um dia completo de análise de dados, incluindo **planejamento de métricas, levantamento de KPIs, modelagem de dados, criação de queries SQL e construção do dashboard no Looker Studio**.
+
+O objetivo era criar dashboards que fornecessem insights estratégicos para os stakeholders, contemplando indicadores financeiros, operacionais e de comportamento de usuários.
+
+---
+
+## Simulação do Processo de Trabalho
+
+O projeto foi desenvolvido simulando o fluxo de trabalho real de um analista de dados:
+
+1. **Reunião com Stakeholders**  
+   - Simulou-se uma reunião com os “stakeholders” (StackRouters), em que foram levantadas as necessidades de negócio.
+   - Perguntas feitas na simulação:  
+     - Quais métricas de vendas são mais relevantes?  
+     - Qual análise de usuários eles esperam ter?  
+     - Que indicadores poderiam ajudar na tomada de decisão?
+
+2. **Planejamento e definição de KPIs**  
+   - Listagem completa das métricas necessárias, como **vendas totais, receita, lucro, ticket médio, margem de lucro, taxa de cancelamento, crescimento mensal**, entre outros.
+   - Para usuários, métricas como **total de usuários, pedidos por usuário, usuários recorrentes vs novos, valor gasto por usuário, performance por canal de tráfego, distribuição por faixa etária**.
+   - Definição da **fonte de cada KPI** dentro do banco de dados disponível, analisando quais tabelas e colunas poderiam ser utilizadas.
+
+3. **Análise e exploração das tabelas disponíveis**  
+   - Verificação das tabelas `users`, `order_items` e `products`.
+   - Identificação de quais campos poderiam ser utilizados diretamente e quais precisariam ser calculados.
+
+4. **Estruturação das queries SQL**  
+   - Criação de **CTEs** para organizar os dados antes da agregação final.
+   - Realização de **joins**, agregações e cálculos intermediários para cada métrica.
+   - Criação de tabelas intermediárias que alimentariam o dashboard.
+
+5. **Criação das tabelas finais para o dashboard**  
+   - Tabela de vendas agregada (`tabela_vendas`)  
+   - Tabela de vendas mensal para análise de crescimento (`tabela_vendas_mensal`)  
+   - Tabela consolidada de usuários (`Clientes_dashhboard`)  
+   - Todas as tabelas foram criadas para facilitar a visualização e reduzir complexidade no dashboard.
+
+6. **Desenvolvimento do dashboard**  
+   - Definição do layout e organização dos gráficos.
+   - Conexão das tabelas do BigQuery no **Looker Studio**.
+   - Configuração de métricas calculadas no dashboard (como margem de lucro, taxa de cancelamento).
+
+7. **Validação e conferência**  
+   - Verificação se os números do dashboard batiam com os cálculos SQL.
+   - Ajustes nas métricas, garantindo consistência e confiabilidade.
 
 ---
 
 ## Estrutura do Projeto
 
-O projeto é dividido em duas partes principais:
+O projeto foi dividido em duas partes principais:
 
 ### 1. Dashboard de Vendas
 
-Baseado em duas tabelas criadas a partir de dados transacionais brutos. Inclui indicadores financeiros e operacionais, como **receita, lucro e taxa de cancelamento**.
+Inclui indicadores financeiros e operacionais, como **receita, lucro, ticket médio, margem de lucro, taxa de cancelamento e crescimento mensal**.
 
 **Imagem do Dashboard de Vendas**  
 ![Dashboard de Vendas](Dashboard%20Vendas.jpg)  
@@ -23,21 +67,18 @@ Link do dashboard: [Visualizar Dashboard](https://lookerstudio.google.com/report
 
 ### 2. Dashboard de Usuários
 
-Baseado em uma única tabela consolidada construída a partir da integração de múltiplas tabelas. Apresenta indicadores de comportamento e perfil de cliente, como **recorrência, faixa etária e origem de tráfego**.
+Inclui indicadores de comportamento e perfil de clientes, como **recorrência, faixa etária, origem de tráfego e ranking de clientes**.
 
 **Imagem do Dashboard de Usuários**  
-![Dashboard de Usuários](Dashboard%20Clientes.jpg)
+![Dashboard de Usuários](Dashboard%20Clientes.jpg)  
 
 Link do dashboard: [Visualizar Dashboard](https://lookerstudio.google.com/u/2/reporting/bbecfe04-8aad-4952-8ec8-ce2fd434480c/page/p_l5ixr7k9wd)
-
 
 ---
 
 ## Planejamento e Definição de Indicadores
 
-Antes da implementação, foi realizada a estruturação dos indicadores, definindo quais métricas seriam incluídas e de onde viriam dentro das tabelas disponíveis. Essa etapa simulou uma reunião com stakeholders, em que foram levantadas as principais necessidades de negócio.
-
-### Indicadores do Dashboard de Vendas
+### Dashboard de Vendas
 
 | Indicador | Descrição | Fonte / Cálculo |
 |-----------|-----------|----------------|
@@ -52,9 +93,7 @@ Antes da implementação, foi realizada a estruturação dos indicadores, defini
 | Ticket Médio | Receita / Quantidade de pedidos | Calculado no dashboard |
 | Vendas por Status | Comparativo de status de pedidos | status |
 
----
-
-### Indicadores do Dashboard de Usuários
+### Dashboard de Usuários
 
 | Indicador | Descrição | Fonte / Cálculo |
 |-----------|-----------|----------------|
@@ -70,8 +109,6 @@ Antes da implementação, foi realizada a estruturação dos indicadores, defini
 ---
 
 ## Modelagem de Dados
-
-As queries abaixo foram utilizadas para criar as tabelas base que alimentam os dashboards. Todas foram executadas no **BigQuery**, dentro do projeto `projectnathanportifolio`.
 
 ### Tabela de Vendas
 
@@ -106,9 +143,7 @@ order by 1
 );
 ````
 
----
-
-### Tabela de Vendas Mensal (Crescimento Mês a Mês)
+### Tabela de Vendas Mensal
 
 ```sql
 create or replace table vendas-451017.sandbox.tabela_vendas_mensal as (
@@ -126,8 +161,6 @@ from tab
 order by mes asc
 );
 ```
-
----
 
 ### Tabela de Usuários Consolidada
 
@@ -186,34 +219,27 @@ from classificacoes
 
 ## Resultados
 
-Os dashboards foram desenvolvidos no **Looker Studio**, conectando diretamente as tabelas criadas no **BigQuery**. O resultado foi a entrega de duas visões estratégicas:
-
-### Dashboard de Vendas
-
-Indicadores de desempenho financeiro e operacional — **receita, lucro, margem, cancelamentos, crescimento mensal**, entre outros.
-
----
-
-### Dashboard de Usuários
-
-Insights sobre o comportamento dos clientes, perfil demográfico e performance por canal de aquisição.
-
+* **Dashboard de Vendas:** insights financeiros e operacionais.
+* **Dashboard de Usuários:** análise do comportamento, perfil demográfico e performance por canal de aquisição.
 
 ---
 
 ## Principais Aprendizados
 
-* Planejamento e modelagem de indicadores antes da implementação é essencial.
-* Construção de pipelines SQL modulares, permitindo a reutilização de tabelas e métricas.
-* Aplicação de funções de janela para cálculo de métricas dinâmicas (`lag`, `row_number`).
-* Criação de dashboards orientados a negócio, com foco em clareza e tomada de decisão.
+* Planejamento detalhado das métricas antes de criar tabelas e dashboards.
+* Estruturação de pipelines SQL modulares e reutilizáveis.
+* Uso de funções de janela (`lag`, `row_number`) para métricas dinâmicas.
+* Criação de dashboards claros e orientados à tomada de decisão.
 
 ---
 
 ## Ferramentas Utilizadas
 
 * **Google BigQuery** — modelagem e processamento de dados.
-* **Looker Studio** — criação dos dashboards e visualizações.
-* **SQL (Standard SQL)** — consultas, cálculos e agregações.
-* **Google Cloud Platform (GCP)** — ambiente de execução e armazenamento.
+* **Looker Studio** — visualização e dashboards.
+* **SQL (Standard SQL)** — consultas e agregações.
+* **Google Cloud Platform (GCP)** — ambiente de execução.
+
+
+
 
