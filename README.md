@@ -1,3 +1,4 @@
+````markdown
 # Dashboard de Vendas e Usuários
 
 ## Visão Geral
@@ -16,21 +17,18 @@ Baseado em duas tabelas criadas a partir de dados transacionais brutos.
 Inclui indicadores financeiros e operacionais, como **receita, lucro e taxa de cancelamento**.
 
 **Imagem do Dashboard de Vendas**  
- 
-![Dashboard de Vendas](Dashboard%20Vendas.jpg)
+![Dashboard de Vendas](./Dashboard%20Vendas.jpg)
 
+[Visualizar no Looker Studio](https://lookerstudio.google.com/reporting/bbecfe04-8aad-4952-8ec8-ce2fd434480c)
 
-
-link do dashboard: https://lookerstudio.google.com/reporting/bbecfe04-8aad-4952-8ec8-ce2fd434480c
+---
 
 ### 2. Dashboard de Usuários
 Baseado em uma única tabela consolidada construída a partir da integração de múltiplas tabelas.  
 Apresenta indicadores de comportamento e perfil de cliente, como **recorrência, faixa etária e origem de tráfego**.
 
 **Imagem do Dashboard de Usuários**  
-
-![Dashboard de Vendas](Dashboard%20Clientes.jpg)
-
+![Dashboard de Usuários](./Dashboard%20Clientes.jpg)
 
 ---
 
@@ -185,35 +183,43 @@ from classificacoes
 
 ---
 
-## Resultados
+## Resultados e Insights
 
 Os dashboards foram desenvolvidos no **Looker Studio**, conectando diretamente as tabelas criadas no **BigQuery**.
-O resultado foi a entrega de duas visões estratégicas:
+O resultado foi a entrega de duas visões estratégicas e complementares:
 
 ### Dashboard de Vendas
 
-Indicadores de desempenho financeiro e operacional — **receita, lucro, margem, cancelamentos, crescimento mensal**, entre outros.
+Indicadores de desempenho financeiro e operacional — **receita, lucro, margem, cancelamentos, crescimento mensal** e **ticket médio**.
 
-**Imagem complementar do Dashboard de Vendas (visão detalhada)**
-*(insira aqui a imagem do painel detalhado de vendas)*
-`![Dashboard de Vendas Detalhado](caminho-da-imagem-aqui)`
+**Principais insights observados:**
+
+* A margem de lucro média manteve-se acima de 50% no período analisado.
+* O crescimento mês a mês (MoM) foi de **7,78%**, demonstrando tendência positiva.
+* A taxa de cancelamento de **15,2%** sugere oportunidade de melhoria no processo logístico.
+* A maior parte da receita foi concentrada nos três primeiros meses de 2023, indicando sazonalidade de vendas.
+
+---
 
 ### Dashboard de Usuários
 
-Insights sobre o comportamento dos clientes, perfil demográfico e performance por canal de aquisição.
+Apresenta insights sobre o **comportamento de compra, perfil etário e performance por canal de aquisição**.
 
-**Imagem complementar do Dashboard de Usuários (visão analítica)**
-*(insira aqui a imagem do painel detalhado de usuários)*
-`![Dashboard de Usuários Detalhado](caminho-da-imagem-aqui)`
+**Principais insights observados:**
+
+* O volume de usuários **recorrentes** aumentou gradualmente, representando maior fidelização.
+* A faixa etária com maior volume de compras foi entre **33 e 39 anos**, seguida da faixa **47-56**.
+* O canal **Search** apresentou o maior retorno, sendo responsável pela maior parte dos pedidos.
+* O **ticket médio por usuário** manteve-se estável em torno de **R$135**, indicando consistência de gasto.
 
 ---
 
 ## Principais Aprendizados
 
-* Planejamento e modelagem de indicadores antes da implementação é essencial.
-* Construção de pipelines SQL modulares, permitindo a reutilização de tabelas e métricas.
-* Aplicação de funções de janela para cálculo de métricas dinâmicas (`lag`, `row_number`).
-* Criação de dashboards orientados a negócio, com foco em clareza e tomada de decisão.
+* Importância do planejamento e modelagem de indicadores antes da implementação.
+* Construção de **pipelines SQL modulares**, permitindo a reutilização de tabelas e métricas.
+* Uso de **funções de janela** para cálculos dinâmicos (`lag`, `row_number`).
+* Criação de dashboards **orientados a negócio**, com foco em clareza, storytelling e tomada de decisão.
 
 ---
 
@@ -223,6 +229,8 @@ Insights sobre o comportamento dos clientes, perfil demográfico e performance p
 * **Looker Studio** — criação dos dashboards e visualizações.
 * **SQL (Standard SQL)** — consultas, cálculos e agregações.
 * **Google Cloud Platform (GCP)** — ambiente de execução e armazenamento.
+
+
 
 
 
