@@ -14,11 +14,7 @@ O projeto foi desenvolvido simulando o fluxo de trabalho real de um analista de 
 
 1. **Reunião com Stakeholders**  
    - Simulou-se uma reunião com os stakeholders, em que foram levantadas as necessidades de negócio.
-   - Perguntas feitas na simulação:  
-     - Quais métricas de vendas são mais relevantes?  
-     - Qual análise de usuários eles esperam ter?  
-     - Que indicadores poderiam ajudar na tomada de decisão?
-
+  
 2. **Planejamento e definição de KPIs**  
    - Listagem completa das métricas necessárias, como **vendas totais, receita, lucro, ticket médio, margem de lucro, taxa de cancelamento, crescimento mensal**, entre outros.
    - Para usuários, métricas como **total de usuários, pedidos por usuário, usuários recorrentes vs novos, valor gasto por usuário, performance por canal de tráfego, distribuição por faixa etária**.
