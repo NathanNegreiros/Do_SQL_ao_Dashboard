@@ -17,7 +17,10 @@ Inclui indicadores financeiros e operacionais, como **receita, lucro e taxa de c
 
 **Imagem do Dashboard de Vendas**  
 *(insira aqui a captura de tela do dashboard de vendas)*  
-`![Dashboard de Vendas](caminho-da-imagem-aqui)`
+`![Dashboard de Vendas](Dashboard Vendas.jpg)`
+
+
+link do dashboard: https://lookerstudio.google.com/reporting/bbecfe04-8aad-4952-8ec8-ce2fd434480c
 
 ### 2. Dashboard de Usuários
 Baseado em uma única tabela consolidada construída a partir da integração de múltiplas tabelas.  
@@ -25,7 +28,7 @@ Apresenta indicadores de comportamento e perfil de cliente, como **recorrência,
 
 **Imagem do Dashboard de Usuários**  
 *(insira aqui a captura de tela do dashboard de usuários)*  
-`![Dashboard de Usuários](caminho-da-imagem-aqui)`
+`![Dashboard de Usuários](Dashboard Clientes.jpg)`
 
 ---
 
