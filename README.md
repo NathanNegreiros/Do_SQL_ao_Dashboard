@@ -1,10 +1,8 @@
-````markdown
 # Dashboard de Vendas e Usuários
 
 ## Visão Geral
 
-Este projeto tem como objetivo construir dois dashboards analíticos — **Vendas** e **Usuários** — utilizando consultas SQL otimizadas no **Google BigQuery**.  
-O foco foi estruturar e modelar os dados de forma profissional, simulando o processo de criação de indicadores de negócio solicitados por stakeholders, desde o planejamento das métricas até a visualização final no **Looker Studio**.
+Este projeto tem como objetivo construir dois dashboards analíticos — **Vendas** e **Usuários** — utilizando consultas SQL otimizadas no **Google BigQuery**. O foco foi estruturar e modelar os dados de forma profissional, simulando o processo de criação de indicadores de negócio solicitados por stakeholders, desde o planejamento das métricas até a visualização final no **Looker Studio**.
 
 ---
 
@@ -13,64 +11,64 @@ O foco foi estruturar e modelar os dados de forma profissional, simulando o proc
 O projeto é dividido em duas partes principais:
 
 ### 1. Dashboard de Vendas
-Baseado em duas tabelas criadas a partir de dados transacionais brutos.  
-Inclui indicadores financeiros e operacionais, como **receita, lucro e taxa de cancelamento**.
+
+Baseado em duas tabelas criadas a partir de dados transacionais brutos. Inclui indicadores financeiros e operacionais, como **receita, lucro e taxa de cancelamento**.
 
 **Imagem do Dashboard de Vendas**  
-![Dashboard de Vendas](./Dashboard%20Vendas.jpg)
+![Dashboard de Vendas](Dashboard%20Vendas.jpg)  
 
-[Visualizar no Looker Studio](https://lookerstudio.google.com/reporting/bbecfe04-8aad-4952-8ec8-ce2fd434480c)
+Link do dashboard: [Visualizar Dashboard](https://lookerstudio.google.com/reporting/bbecfe04-8aad-4952-8ec8-ce2fd434480c)
 
 ---
 
 ### 2. Dashboard de Usuários
-Baseado em uma única tabela consolidada construída a partir da integração de múltiplas tabelas.  
-Apresenta indicadores de comportamento e perfil de cliente, como **recorrência, faixa etária e origem de tráfego**.
+
+Baseado em uma única tabela consolidada construída a partir da integração de múltiplas tabelas. Apresenta indicadores de comportamento e perfil de cliente, como **recorrência, faixa etária e origem de tráfego**.
 
 **Imagem do Dashboard de Usuários**  
-![Dashboard de Usuários](./Dashboard%20Clientes.jpg)
+![Dashboard de Usuários](Dashboard%20Clientes.jpg)
 
 ---
 
 ## Planejamento e Definição de Indicadores
 
-Antes da implementação, foi realizada a estruturação dos indicadores, definindo quais métricas seriam incluídas e de onde viriam dentro das tabelas disponíveis.  
-Essa etapa simulou uma reunião com stakeholders, em que foram levantadas as principais necessidades de negócio.
+Antes da implementação, foi realizada a estruturação dos indicadores, definindo quais métricas seriam incluídas e de onde viriam dentro das tabelas disponíveis. Essa etapa simulou uma reunião com stakeholders, em que foram levantadas as principais necessidades de negócio.
 
 ### Indicadores do Dashboard de Vendas
 
 | Indicador | Descrição | Fonte / Cálculo |
-|------------|------------|----------------|
-| Vendas Totais | Quantidade de vendas no período | `order_id` (tabela `order_items`) |
-| Receita Total | Soma dos valores vendidos | `sale_price` (tabela `order_items`) |
-| Lucro Total | Receita - Custo | `sale_price - cost` |
+|-----------|-----------|----------------|
+| Vendas Totais | Quantidade de vendas no período | order_id (tabela order_items) |
+| Receita Total | Soma dos valores vendidos | sale_price (tabela order_items) |
+| Lucro Total | Receita - Custo | sale_price - cost |
 | Percentual de Custo | Custo / Receita | Calculado no dashboard |
 | Margem de Lucro | Lucro / Receita | Calculado no dashboard |
-| Pedidos Cancelados | Total de pedidos com status “Cancelled” | `status` |
+| Pedidos Cancelados | Total de pedidos com status “Cancelled” | status |
 | Taxa de Cancelamento | Cancelados / Total de pedidos | Calculado no dashboard |
-| Crescimento Mensal de Vendas | Variação percentual mês a mês | `tabela_vendas_mensal` |
+| Crescimento Mensal de Vendas | Variação percentual mês a mês | tabela_vendas_mensal |
 | Ticket Médio | Receita / Quantidade de pedidos | Calculado no dashboard |
-| Vendas por Status | Comparativo de status de pedidos | `status` |
+| Vendas por Status | Comparativo de status de pedidos | status |
+
+---
 
 ### Indicadores do Dashboard de Usuários
 
 | Indicador | Descrição | Fonte / Cálculo |
-|------------|------------|----------------|
-| Total de Pedidos | Quantidade total de pedidos realizados | `order_id` |
-| Total de Usuários | Quantidade de usuários únicos | `user_id` |
+|-----------|-----------|----------------|
+| Total de Pedidos | Quantidade total de pedidos realizados | order_id |
+| Total de Usuários | Quantidade de usuários únicos | user_id |
 | Pedidos por Usuário | Pedidos / Usuários | Calculado no dashboard |
-| Valor Gasto por Usuário | Receita / Usuário | `sum(sale_price)` |
-| Usuários Novos vs Recorrentes | Classificação por número de compras | `row_number() over(partition by user_id)` |
-| Performance por Tipo de Tráfego | Análise por `traffic_source` | Tabela `users` |
-| Top Clientes | Ranking por valor total gasto | Agrupamento por `user_id` |
-| Distribuição por Faixa Etária | Agrupamento condicional por idade | `CASE` na query |
+| Valor Gasto por Usuário | Receita / Usuário | sum(sale_price) |
+| Usuários Novos vs Recorrentes | Classificação por número de compras | row_number() over(partition by user_id) |
+| Performance por Tipo de Tráfego | Análise por traffic_source | Tabela users |
+| Top Clientes | Ranking por valor total gasto | Agrupamento por user_id |
+| Distribuição por Faixa Etária | Agrupamento condicional por idade | CASE na query |
 
 ---
 
 ## Modelagem de Dados
 
-Abaixo estão as queries utilizadas para criar as tabelas base que alimentam os dashboards.  
-Todas foram executadas no **BigQuery**, dentro do projeto `projectnathanportifolio`.
+As queries abaixo foram utilizadas para criar as tabelas base que alimentam os dashboards. Todas foram executadas no **BigQuery**, dentro do projeto `projectnathanportifolio`.
 
 ### Tabela de Vendas
 
@@ -183,43 +181,34 @@ from classificacoes
 
 ---
 
-## Resultados e Insights
+## Resultados
 
-Os dashboards foram desenvolvidos no **Looker Studio**, conectando diretamente as tabelas criadas no **BigQuery**.
-O resultado foi a entrega de duas visões estratégicas e complementares:
+Os dashboards foram desenvolvidos no **Looker Studio**, conectando diretamente as tabelas criadas no **BigQuery**. O resultado foi a entrega de duas visões estratégicas:
 
 ### Dashboard de Vendas
 
-Indicadores de desempenho financeiro e operacional — **receita, lucro, margem, cancelamentos, crescimento mensal** e **ticket médio**.
+Indicadores de desempenho financeiro e operacional — **receita, lucro, margem, cancelamentos, crescimento mensal**, entre outros.
 
-**Principais insights observados:**
-
-* A margem de lucro média manteve-se acima de 50% no período analisado.
-* O crescimento mês a mês (MoM) foi de **7,78%**, demonstrando tendência positiva.
-* A taxa de cancelamento de **15,2%** sugere oportunidade de melhoria no processo logístico.
-* A maior parte da receita foi concentrada nos três primeiros meses de 2023, indicando sazonalidade de vendas.
+**Imagem complementar do Dashboard de Vendas (visão detalhada)**
+![Dashboard de Vendas Detalhado](caminho-da-imagem-aqui)
 
 ---
 
 ### Dashboard de Usuários
 
-Apresenta insights sobre o **comportamento de compra, perfil etário e performance por canal de aquisição**.
+Insights sobre o comportamento dos clientes, perfil demográfico e performance por canal de aquisição.
 
-**Principais insights observados:**
-
-* O volume de usuários **recorrentes** aumentou gradualmente, representando maior fidelização.
-* A faixa etária com maior volume de compras foi entre **33 e 39 anos**, seguida da faixa **47-56**.
-* O canal **Search** apresentou o maior retorno, sendo responsável pela maior parte dos pedidos.
-* O **ticket médio por usuário** manteve-se estável em torno de **R$135**, indicando consistência de gasto.
+**Imagem complementar do Dashboard de Usuários (visão analítica)**
+![Dashboard de Usuários Detalhado](caminho-da-imagem-aqui)
 
 ---
 
 ## Principais Aprendizados
 
-* Importância do planejamento e modelagem de indicadores antes da implementação.
-* Construção de **pipelines SQL modulares**, permitindo a reutilização de tabelas e métricas.
-* Uso de **funções de janela** para cálculos dinâmicos (`lag`, `row_number`).
-* Criação de dashboards **orientados a negócio**, com foco em clareza, storytelling e tomada de decisão.
+* Planejamento e modelagem de indicadores antes da implementação é essencial.
+* Construção de pipelines SQL modulares, permitindo a reutilização de tabelas e métricas.
+* Aplicação de funções de janela para cálculo de métricas dinâmicas (`lag`, `row_number`).
+* Criação de dashboards orientados a negócio, com foco em clareza e tomada de decisão.
 
 ---
 
@@ -229,11 +218,4 @@ Apresenta insights sobre o **comportamento de compra, perfil etário e performan
 * **Looker Studio** — criação dos dashboards e visualizações.
 * **SQL (Standard SQL)** — consultas, cálculos e agregações.
 * **Google Cloud Platform (GCP)** — ambiente de execução e armazenamento.
-
-
-
-
-
-
-
 
