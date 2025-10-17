@@ -13,7 +13,7 @@ O objetivo era criar dashboards que fornecessem insights estratégicos para os s
 O projeto foi desenvolvido simulando o fluxo de trabalho real de um analista de dados:
 
 1. **Reunião com Stakeholders**  
-   - Simulou-se uma reunião com os “stakeholders” (StackRouters), em que foram levantadas as necessidades de negócio.
+   - Simulou-se uma reunião com os stakeholders, em que foram levantadas as necessidades de negócio.
    - Perguntas feitas na simulação:  
      - Quais métricas de vendas são mais relevantes?  
      - Qual análise de usuários eles esperam ter?  
