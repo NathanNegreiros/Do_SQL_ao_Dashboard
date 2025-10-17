@@ -192,17 +192,12 @@ Os dashboards foram desenvolvidos no **Looker Studio**, conectando diretamente a
 
 Indicadores de desempenho financeiro e operacional — **receita, lucro, margem, cancelamentos, crescimento mensal**, entre outros.
 
-**Imagem complementar do Dashboard de Vendas (visão detalhada)**
-![Dashboard de Vendas Detalhado](caminho-da-imagem-aqui)
-
 ---
 
 ### Dashboard de Usuários
 
 Insights sobre o comportamento dos clientes, perfil demográfico e performance por canal de aquisição.
 
-**Imagem complementar do Dashboard de Usuários (visão analítica)**
-![Dashboard de Usuários Detalhado](caminho-da-imagem-aqui)
 
 ---
 
