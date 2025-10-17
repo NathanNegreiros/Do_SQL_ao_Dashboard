@@ -28,6 +28,9 @@ Baseado em uma única tabela consolidada construída a partir da integração de
 **Imagem do Dashboard de Usuários**  
 ![Dashboard de Usuários](Dashboard%20Clientes.jpg)
 
+Link do dashboard: [Visualizar Dashboard](https://lookerstudio.google.com/u/2/reporting/bbecfe04-8aad-4952-8ec8-ce2fd434480c/page/p_l5ixr7k9wd)
+
+
 ---
 
 ## Planejamento e Definição de Indicadores
