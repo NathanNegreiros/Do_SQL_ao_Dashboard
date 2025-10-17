@@ -16,7 +16,7 @@ Baseado em duas tabelas criadas a partir de dados transacionais brutos.
 Inclui indicadores financeiros e operacionais, como **receita, lucro e taxa de cancelamento**.
 
 **Imagem do Dashboard de Vendas**  
-*(insira aqui a captura de tela do dashboard de vendas)*  
+ 
 ![Dashboard de Vendas](Dashboard%20Vendas.jpg)
 
 
@@ -28,7 +28,7 @@ Baseado em uma única tabela consolidada construída a partir da integração de
 Apresenta indicadores de comportamento e perfil de cliente, como **recorrência, faixa etária e origem de tráfego**.
 
 **Imagem do Dashboard de Usuários**  
-*(insira aqui a captura de tela do dashboard de usuários)*  
+
 ![Dashboard de Vendas](Dashboard%20Clientes.jpg)
 
 
